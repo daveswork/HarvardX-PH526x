@@ -64,8 +64,11 @@ def word_count_distribution(text):
 def more_frequent(distribution):
     '''
     You might begin with storing the counts of the distribution as follows: counts = list(distribution.keys())
-    Store the values of the distribution with frequency_of_counts = list(distribution.values()).  numpy is preloaded into memory as np: find the cumulative sum of these using np.cumsum().
-    To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum, and subtract this value from 1. You're ready to make a dictionary with the results of this calculation as values and counts as keys!
+    Store the values of the distribution with frequency_of_counts = list(distribution.values()).
+    numpy is preloaded into memory as np: find the cumulative sum of these using np.cumsum().
+    To obtain the fraction of words more frequent than this, divide this cumulative sum by its maximum,
+    and subtract this value from 1. You're ready to make a dictionary with the results of this calculation as values
+    and counts as keys!
     '''
     counts = list(distribution.keys())
     return distribution
