@@ -1,4 +1,5 @@
 from collections import Counter
+import numpy as np
 
 text = "This is my text text. We're keeping this text short to keep things manageable."
 
