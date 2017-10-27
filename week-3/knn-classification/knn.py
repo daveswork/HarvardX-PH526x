@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import scipy.stats as ss
+import matplotlib.pyplot as plt
 
 def distance(p1,p2):
     """
@@ -49,3 +50,49 @@ vote_counts = majority_votess(votes)
 
 
 print(vote_counts)
+
+
+
+
+
+
+def find_nearest_neighbors(p, points, k=5):
+    """
+    Find the k nearest neighbors of point p
+    :param p:
+    :param points:
+    :param k:
+    :return:
+    """
+    distances = np.zeros(points.shape[0])
+    for i in range(len(distances)):
+        distances[i] = distance(p, points[i])
+    ind = np.argsort(distances)
+    return ind[:k]
+
+
+def knn_predict(p, points, outcomes, k=5):
+    """
+    Find k nearest neighbors.
+    Predict the class of p based on majority vote
+    :param p:
+    :param points:
+    :param k:
+    :return:
+    """
+    ind = find_nearest_neighbors(p, points, k)
+    return majority_vote(outcomes[ind])
+
+
+points = np.array([[1,1],[1,2],[1,3],[2,1],[2,2],[2,3],[3,1],[3,2],[3,3]])
+p = np.array([2.5,2])
+outcomes = np.array([0,0,0,0,1,1,1,1,1])
+
+plt.interactive(True)
+plt.plot(points[:,0], points[:,1], "ro")
+plt.plot(p[0], p[1], "bo")
+
+plt.axis([0.5, 3.5, 0.5, 3.5])
+
+ind = find_nearest_neighbors(p, points, 4)
+print(knn_predict(p, points,outcomes, k=2))
